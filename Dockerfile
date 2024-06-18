@@ -10,11 +10,11 @@ COPY package*.json ./
 # Install the app dependencies, including bcrypt
 RUN npm install
 
-# Copy the rest of the application code to the working directory
-COPY . .
-
 # Ensure bcrypt is rebuilt specifically for the current environment
 RUN npm rebuild bcrypt --build-from-source
+
+# Copy the rest of the application code to the working directory
+COPY . .
 
 # Expose the port your app runs on
 EXPOSE 3000
