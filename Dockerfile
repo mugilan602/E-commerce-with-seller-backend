@@ -4,6 +4,9 @@ FROM node:18
 # Create and change to the app directory
 WORKDIR /app
 
+# Install build tools to compile native modules
+RUN apt-get update && apt-get install -y python3 make g++ && rm -rf /var/lib/apt/lists/*
+
 # Copy the package.json and package-lock.json files to the working directory
 COPY package*.json ./
 
